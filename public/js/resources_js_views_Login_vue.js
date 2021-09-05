@@ -13,21 +13,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
-/* harmony import */ var _utils_messages__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/messages */ "./resources/js/utils/messages.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -111,33 +103,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-
-
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "login",
   data: function data() {
     return {
+      sessionId: {},
       email: "",
       password: ""
     };
   },
   validations: {
     email: {
-      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.email,
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.email,
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required
     },
     password: {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.required,
-      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__.minLength)(6)
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.required,
+      minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__.minLength)(6)
     }
   },
-  // mounted () {
-  //     if (messages[this.$route.query.message]) {
-  //         this.$message(messages[this.$route.query.message])
-  //     }
-  // },
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapActions)(["login"])), {}, {
+  methods: {
     submitHandler: function submitHandler() {
       var _this = this;
 
@@ -163,50 +151,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 };
                 _context.prev = 4;
                 _context.next = 7;
-                return _this.login(formData);
+                return axios.post("/login", {
+                  email: formData.email,
+                  password: formData.password
+                });
 
               case 7:
-                _context.next = 9;
-                return _this.$router.push("/page");
+                _this.$router.push("/");
 
-              case 9:
-                _context.next = 13;
+                _context.next = 12;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](4);
 
-              case 13:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[4, 11]]);
+        }, _callee, null, [[4, 10]]);
       }))();
     }
-  })
-});
-
-/***/ }),
-
-/***/ "./resources/js/utils/messages.js":
-/*!****************************************!*\
-  !*** ./resources/js/utils/messages.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* eslint-disable */
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  'logout': 'Вы вышли из системы',
-  'auth/user-not-found': 'Пользователя с таким email не существует',
-  'auth/wrong-password': 'Неверный пароль',
-  'auth/email-already-in-use': 'Данный email уже занят'
+  }
 });
 
 /***/ }),
@@ -224,41 +192,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _assets_fonts_Downcome_otf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/fonts/Downcome.otf */ "./resources/js/assets/fonts/Downcome.otf");
-/* harmony import */ var _assets_fonts_Plumb_ttf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/fonts/Plumb.ttf */ "./resources/js/assets/fonts/Plumb.ttf");
-/* harmony import */ var _assets_images_background_authenticating_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/images/background-authenticating.jpg */ "./resources/js/assets/images/background-authenticating.jpg");
 // Imports
 
-
-
-
-
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_assets_fonts_Downcome_otf__WEBPACK_IMPORTED_MODULE_2__.default);
-var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_assets_fonts_Plumb_ttf__WEBPACK_IMPORTED_MODULE_3__.default);
-var ___CSS_LOADER_URL_REPLACEMENT_2___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_assets_images_background_authenticating_jpg__WEBPACK_IMPORTED_MODULE_4__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*[data-v-12f5395a],\n*[data-v-12f5395a]::after,\n*[data-v-12f5395a]::before {\n  box-sizing: border-box;\n}\n@font-face {\n  font-family: \"Downcome\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  font-style: normal;\n  font-weight: 300;\n}\n@font-face {\n  font-family: \"Plumb\";\n  src: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n  font-style: normal;\n  font-weight: 300;\n}\n.header[data-v-12f5395a] {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\n  background-size: cover;\n  height: 100vh;\n}\n.menu-group[data-v-12f5395a] {\n  padding-top: 20vh;\n}\n.menu[data-v-12f5395a] {\n  background-color: white;\n  height: 100vh;\n  min-width: 370px;\n  border-right: 3px solid rgba(0, 0, 0, 0.65);\n  border-left: 3px solid rgba(0, 0, 0, 0.65);\n}\n.menu-title[data-v-12f5395a] {\n  font-family: \"Downcome\";\n  font-size: 27px;\n  font-weight: 300;\n  opacity: 0.9;\n}\n.form__submit-button[data-v-12f5395a] {\n  display: none;\n}\n.submit__button-label[data-v-12f5395a] {\n  margin-top: 10px;\n  font-size: 1.1rem;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 2.5rem;\n  cursor: pointer;\n  color: black !important;\n  opacity: 0.75 !important;\n  border: none;\n  background-color: #bfbdbd;\n}\n.submit__button-label[data-v-12f5395a]:hover {\n  color: #ffffff !important;\n  background-color: #929292;\n}\n.input-group[data-v-12f5395a] {\n  height: 66.4px;\n}\n.invalid[data-v-12f5395a] {\n  height: 1.4rem;\n  color: #782441;\n}\n.invalid-group[data-v-12f5395a] {\n  height: 22.39px;\n  width: 100%;\n}\n.form__register-input[data-v-12f5395a] {\n  height: 1.5rem;\n  margin-top: 1rem;\n  border-top: 0;\n  border-left: 0;\n  border-right: 0;\n  outline: none;\n  font-family: \"Plumb\";\n}\n.form__register-input[data-v-12f5395a]:focus::-webkit-input-placeholder {\n  opacity: 0;\n  -webkit-transition: opacity 0.8s ease;\n  transition: opacity 0.8s ease;\n}\n.form__register-input[data-v-12f5395a] :focus::-moz-placeholder {\n  opacity: 0;\n  -moz-transition: opacity 0.8s ease;\n  transition: opacity 0.8s ease;\n}\n.form__register-input[data-v-12f5395a] :focus:-moz-placeholder {\n  opacity: 0;\n  -moz-transition: opacity 0.8s ease;\n  transition: opacity 0.8s ease;\n}\n.form__register-input[data-v-12f5395a] :focus:-ms-input-placeholder {\n  opacity: 0;\n  -ms-transition: opacity 0.8s ease;\n  transition: opacity 0.8s ease;\n}\n.btn-flip[data-v-12f5395a] {\n  opacity: 1;\n  outline: 0;\n  color: #fff;\n  line-height: 40px;\n  position: relative;\n  text-align: center;\n  letter-spacing: 1px;\n  display: inline-block;\n  text-decoration: none !important;\n  font-family: \"Open Sans\";\n  text-transform: uppercase;\n}\n.btn-flip[data-v-12f5395a]:hover:after {\n  opacity: 1;\n  transform: translateY(0) rotateX(0);\n}\n.btn-flip[data-v-12f5395a]:hover:before {\n  opacity: 0;\n  transform: translateY(50%) rotateX(90deg);\n}\n.btn-flip[data-v-12f5395a]:after {\n  top: 0;\n  left: 0;\n  opacity: 0;\n  width: 100%;\n  color: #323237;\n  display: block;\n  transition: 0.5s;\n  position: absolute;\n  background: #adadaf;\n  content: attr(data-back);\n  transform: translateY(-50%) rotateX(90deg);\n}\n.btn-flip[data-v-12f5395a]:before {\n  top: 0;\n  left: 0;\n  opacity: 1;\n  color: #adadaf;\n  display: block;\n  padding: 0 30px;\n  line-height: 40px;\n  transition: 0.5s;\n  position: relative;\n  background: #323237;\n  content: attr(data-front);\n  transform: translateY(0) rotateX(0);\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "*[data-v-12f5395a],\n*[data-v-12f5395a]::after,\n*[data-v-12f5395a]::before {\n  box-sizing: border-box;\n}\n.menu-group[data-v-12f5395a] {\n  padding-top: 100px;\n}\n.menu[data-v-12f5395a] {\n  margin: 100px auto auto auto;\n  position: relative;\n  background-color: #908371;\n  height: 600px;\n  min-width: 600px;\n  border-bottom: 5px solid #B49578;\n  border-top: 5px solid #B49578;\n}\n.menu__title[data-v-12f5395a] {\n  text-align: center;\n  margin: auto;\n  padding: 5px;\n  width: 60%;\n  border-bottom: 3px solid #EAB67C;\n  color: white;\n  font-family: \"Geometos\";\n  font-size: 27px;\n}\n.menu__form-register[data-v-12f5395a] {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n.menu__submit-button[data-v-12f5395a] {\n  display: none;\n}\n.menu__submit-button-label[data-v-12f5395a] {\n  font-family: \"Geometos\";\n  margin-top: 15px;\n  font-size: 20px;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 2.5rem;\n  cursor: pointer;\n  color: #4D5462 !important;\n  border: none;\n  background-color: #EAB67C;\n}\n.menu__submit-button-label[data-v-12f5395a]:hover {\n  color: #ffffff !important;\n  background-color: #B49578;\n}\n.menu__input-group[data-v-12f5395a] {\n  width: 100%;\n  height: 66.4px;\n}\n.menu__invalid-item[data-v-12f5395a] {\n  height: 1.4rem;\n  color: white;\n}\n.menu__invalid-items[data-v-12f5395a] {\n  height: 22.39px;\n  width: 100%;\n}\n.menu__register-input[data-v-12f5395a] {\n  width: 100%;\n  color: #4D5462;\n  background-color: white;\n  padding-left: 10px;\n  padding-right: 10px;\n  height: 2rem;\n  margin-top: 1rem;\n  border: 0;\n  border-bottom: 2px solid #EAB67C;\n  outline: none;\n  font-family: \"Plumb\";\n}\n.menu__register-input[data-v-12f5395a]:focus::-webkit-input-placeholder {\n  opacity: 0;\n  -webkit-transition: opacity 0.8s ease;\n  transition: opacity 0.8s ease;\n}\n.menu__register-input[data-v-12f5395a] :focus::-moz-placeholder {\n  opacity: 0;\n  -moz-transition: opacity 0.8s ease;\n  transition: opacity 0.8s ease;\n}\n.menu__register-input[data-v-12f5395a] :focus:-moz-placeholder {\n  opacity: 0;\n  -moz-transition: opacity 0.8s ease;\n  transition: opacity 0.8s ease;\n}\n.menu__register-input[data-v-12f5395a] :focus:-ms-input-placeholder {\n  opacity: 0;\n  -ms-transition: opacity 0.8s ease;\n  transition: opacity 0.8s ease;\n}\n.menu__button-route[data-v-12f5395a] {\n  width: 100%;\n  margin-top: 5px;\n}\n.btn-flip[data-v-12f5395a] {\n  opacity: 1;\n  outline: 0;\n  color: #ffff;\n  line-height: 40px;\n  position: relative;\n  text-align: center;\n  letter-spacing: 1px;\n  display: inline-block;\n  text-decoration: none !important;\n  font-family: \"Geometos\";\n  text-transform: uppercase;\n}\n.btn-flip[data-v-12f5395a]:hover:after {\n  opacity: 1;\n  transform: translateY(0) rotateX(0);\n}\n.btn-flip[data-v-12f5395a]:hover:before {\n  opacity: 0;\n  transform: translateY(50%) rotateX(90deg);\n}\n.btn-flip[data-v-12f5395a]:after {\n  top: 0;\n  left: 0;\n  opacity: 0;\n  width: 100%;\n  color: white;\n  display: block;\n  transition: 0.5s;\n  position: absolute;\n  background: #B49578;\n  content: attr(data-back);\n  transform: translateY(-50%) rotateX(90deg);\n}\n.btn-flip[data-v-12f5395a]:before {\n  top: 0;\n  left: 0;\n  opacity: 1;\n  color: #4D5462;\n  display: block;\n  padding: 0 30px;\n  line-height: 40px;\n  transition: 0.5s;\n  position: relative;\n  background: #EAB67C;\n  content: attr(data-front);\n  transform: translateY(0) rotateX(0);\n}\n.menu__bottom-icons[data-v-12f5395a] {\n  margin-top: 50px;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-template-rows: 150px 150px;\n}\n.menu__messages-items[data-v-12f5395a] {\n  width: 400px;\n  top: 200px;\n  right: -400px;\n  position: absolute;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/background-authenticating.jpg":
-/*!******************************************************************!*\
-  !*** ./resources/js/assets/images/background-authenticating.jpg ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/background-authenticating.jpg?56e0f5ffc7be17afe981864a0b2db51e");
 
 /***/ }),
 
@@ -402,15 +343,12 @@ var render = function() {
           "div",
           { staticClass: "menu-group" },
           [
-            _c("h1", { staticClass: "text-center menu-title" }, [
-              _vm._v("авторизация")
-            ]),
+            _c("h1", { staticClass: "menu__title" }, [_vm._v("Авторизация")]),
             _vm._v(" "),
             _c(
               "form",
               {
-                staticClass:
-                  "d-flex flex-column align-items-center form__register",
+                staticClass: "menu__form__register",
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
@@ -419,7 +357,7 @@ var render = function() {
                 }
               },
               [
-                _c("div", { staticClass: "input-group" }, [
+                _c("div", { staticClass: "menu__input-group" }, [
                   _c("input", {
                     directives: [
                       {
@@ -430,7 +368,7 @@ var render = function() {
                         modifiers: { trim: true }
                       }
                     ],
-                    staticClass: "w-100 mt-4 form__register-input",
+                    staticClass: "menu__register-input",
                     class: {
                       invalid:
                         (_vm.$v.email.$dirty && !_vm.$v.email.required) ||
@@ -451,15 +389,15 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "invalid-group" }, [
+                  _c("div", { staticClass: "menu__invalid-items" }, [
                     _vm.$v.email.$dirty && !_vm.$v.email.required
-                      ? _c("div", { staticClass: "invalid" }, [
+                      ? _c("div", { staticClass: "menu__invalid-item" }, [
                           _vm._v(
                             "\n                Поле Email не должно быть пустым\n              "
                           )
                         ])
                       : _vm.$v.email.$dirty && !_vm.$v.email.email
-                      ? _c("div", { staticClass: "invalid" }, [
+                      ? _c("div", { staticClass: "menu__invalid-item" }, [
                           _vm._v(
                             "\n                Введите корретный Email\n              "
                           )
@@ -468,7 +406,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "input-group" }, [
+                _c("div", { staticClass: "menu__input-group" }, [
                   _c("input", {
                     directives: [
                       {
@@ -479,7 +417,7 @@ var render = function() {
                         modifiers: { trim: true }
                       }
                     ],
-                    staticClass: "w-100 mt-4 form__register-input",
+                    staticClass: "menu__register-input",
                     attrs: { placeholder: "Пароль", type: "password" },
                     domProps: { value: _vm.password },
                     on: {
@@ -495,15 +433,15 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "invalid-group" }, [
+                  _c("div", { staticClass: "menu__invalid-items" }, [
                     _vm.$v.password.$dirty && !_vm.$v.password.required
-                      ? _c("div", { staticClass: "invalid" }, [
+                      ? _c("div", { staticClass: "menu__invalid-item" }, [
                           _vm._v(
                             "\n                Введите пароль\n              "
                           )
                         ])
                       : _vm.$v.password.$dirty && !_vm.$v.password.minLength
-                      ? _c("div", { staticClass: "invalid" }, [
+                      ? _c("div", { staticClass: "menu__invalid-item" }, [
                           _vm._v(
                             "\n                Пароль должен быть\n                " +
                               _vm._s(_vm.$v.password.$params.minLength) +
@@ -519,27 +457,34 @@ var render = function() {
                 _c(
                   "label",
                   {
-                    staticClass: "submit__button-label",
+                    staticClass: "menu__submit-button-label",
                     attrs: { for: "formSumbitButton" }
                   },
                   [_vm._v("\n            Авторизироваться\n          ")]
                 ),
                 _vm._v(" "),
                 _c("input", {
-                  staticClass: "form__submit-button",
+                  staticClass: "menu__submit-button",
                   attrs: { id: "formSumbitButton", type: "submit" }
                 })
               ]
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "menu-decr" }),
+            _c("router-link", {
+              staticClass: "btn-flip menu__button-route",
+              attrs: {
+                to: "/register",
+                "data-back": "перейти",
+                "data-front": "Регистрация"
+              }
+            }),
             _vm._v(" "),
             _c("router-link", {
-              staticClass: "mt-2 w-100 btn-flip",
+              staticClass: "btn-flip menu__button-route",
               attrs: {
                 to: "/",
                 "data-back": "перейти",
-                "data-front": "Регистрация"
+                "data-front": "К каталогу"
               }
             })
           ],

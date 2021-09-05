@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div style="">
+    <div>
     Страница не найдена
     </div>
 </body>

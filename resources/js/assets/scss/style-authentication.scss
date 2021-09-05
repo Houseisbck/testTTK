@@ -4,88 +4,87 @@
     box-sizing: border-box
 }
 
-@font-face {
-    font-family: 'Downcome';
-    src: url('../assets/fonts/Downcome.otf');
-    font-style: normal;
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: 'Plumb';
-    src: url('../assets/fonts/Plumb.ttf');
-    font-style: normal;
-    font-weight: 300;
-}
-
-.header {
-    background-image: url('../assets/images/background-authenticating.jpg');
-    background-size: cover;
-    height: 100vh;
-}
-
 .menu-group {
-    padding-top: 20vh;
+    padding-top: 100px;
 }
 
 .menu {
-    background-color: rgb(255, 255, 255);
-    height: 100vh;
-    min-width: 370px;
-    border-right: 3px solid rgba(0, 0, 0, 0.65);
-    border-left: 3px solid rgba(0, 0, 0, 0.65);
+    margin: 100px auto auto auto;
+    position: relative;
+    background-color: #908371;
+    height: 600px;
+    min-width: 600px;
+    border-bottom: 5px solid #B49578;
+    border-top: 5px solid #B49578;
 }
 
-.menu-title {
-    font-family: 'Downcome';
+.menu__title {
+    text-align: center;
+    margin: auto;
+    padding: 5px;
+    width: 60%;
+    border-bottom: 3px solid #EAB67C;
+    color: white;
+    font-family: 'Geometos';
     font-size: 27px;
-    font-weight: 300;
-    opacity: 0.9;
 }
 
-.form__submit-button{
+.menu__form-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu__submit-button {
     display: none;
 }
 
-.submit__button-label{
-    margin-top: 10px;
-    font-size: 1.1rem;
+
+.menu__submit-button-label {
+    font-family: 'Geometos';
+    margin-top: 15px;
+    font-size: 20px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 2.5rem;
     cursor: pointer;
-    color: black!important;
-    opacity: 0.75!important;
+    color: #4D5462 !important;
     border: none;
-    background-color: rgb(191, 189, 189);
-    &:hover{
+    background-color: #EAB67C;
+
+    &:hover {
         color: #ffffff !important;
-        background-color: #929292;
+        background-color: #B49578;
     }
 }
 
-.input-group{
+.menu__input-group {
+    width: 100%;
     height: 66.40px;
 }
 
-.invalid{
+.menu__invalid-item {
     height: 1.4rem;
-    color: rgb(120, 36, 65);
+    color: rgb(255, 255, 255);
 }
 
-.invalid-group{
+.menu__invalid-items {
     height: 22.39px;
     width: 100%;
 }
 
-.form__register-input {
-    height: 1.5rem;
+.menu__register-input {
+    width: 100%;
+    color: #4D5462;
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 2rem;
     margin-top: 1rem;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    border: 0;
+    border-bottom: 2px solid #EAB67C;
     outline: none;
     font-family: 'Plumb';
 
@@ -112,17 +111,22 @@
 
 $speed: 0.5s;
 
+.menu__button-route {
+    width: 100%;
+    margin-top: 5px;
+}
+
 .btn-flip {
     opacity: 1;
     outline: 0;
-    color: #fff;
+    color: #ffff;
     line-height: 40px;
     position: relative;
     text-align: center;
     letter-spacing: 1px;
     display: inline-block;
     text-decoration: none !important;
-    font-family: 'Open Sans';
+    font-family: 'Geometos';
     text-transform: uppercase;
 
     &:hover {
@@ -143,11 +147,11 @@ $speed: 0.5s;
         left: 0;
         opacity: 0;
         width: 100%;
-        color: #323237;
+        color: white;
         display: block;
         transition: $speed;
         position: absolute;
-        background: #adadaf;
+        background: #B49578;
         content: attr(data-back);
         transform: translateY(-50%) rotateX(90deg);
     }
@@ -156,14 +160,29 @@ $speed: 0.5s;
         top: 0;
         left: 0;
         opacity: 1;
-        color: #adadaf;
+        color: #4D5462;
         display: block;
         padding: 0 30px;
         line-height: 40px;
         transition: $speed;
         position: relative;
-        background: #323237;
+        background: #EAB67C;
         content: attr(data-front);
         transform: translateY(0) rotateX(0);
     }
+}
+
+.menu__bottom-icons {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 150px 150px;
+}
+
+
+.menu__messages-items {
+    width: 400px;
+    top: 200px;
+    right: -400px;
+    position: absolute;
 }

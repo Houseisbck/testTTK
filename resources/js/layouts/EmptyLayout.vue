@@ -1,11 +1,17 @@
 <template>
-    <div style="background-color: grey">
-        <router-view />
-    </div>
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'empty'
-}
+  name: "empty",
+};
 </script>
+
+<style>
+body {
+  background-color: #ece9e0 !important;
+}
+</style>
